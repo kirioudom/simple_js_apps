@@ -53,9 +53,14 @@ async function main() {
 
   window.addEventListener("scroll", async () => {
     if (isScrollNearBottom() && !isRequesting) {
-      isRequesting = true;
-      await getPhotoAndAppend();
-      isRequesting = false;
+      try {
+        isRequesting = true;
+        await getPhotoAndAppend();
+        isRequesting = false;
+      } catch (e) {
+        console.log(e);
+        alert("Something went wrong! try again later.");
+      }
     }
   });
 }
