@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap"
       rel="stylesheet"
@@ -13,20 +16,32 @@
     <title>Music Player</title>
   </head>
   <body>
-    <main>
+    <main class="container">
       <div class="music-player">
         <div class="music-player__picture">
-          <img />
+          <img
+            src="https://images.unsplash.com/photo-1622495806291-29f2d2270e7d?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=686&q=80"
+            alt="music"
+            width="200"
+            height="200"
+          />
         </div>
-        <p class="music-player__song-title">title of song</p>
+        <p class="music-player__song-title">Electric chill machine</p>
         <p class="music-player__singer-name">singer's name</p>
+        <div class="duration"><span>00:00</span><span>3:00</span></div>
         <div class="music-player__progress">
           <div class="music-player__progress__fill"></div>
         </div>
         <div class="music-player__controller">
-          <button>Back Rewind</button>
-          <button>Play</button>
-          <button>Forward Rewind</button>
+          <button>
+            <i class="fa fa-backward fa-2x" aria-hidden="true"></i>
+          </button>
+          <button>
+            <i class="fa fa-play fa-3x" aria-hidden="true"></i>
+          </button>
+          <button>
+            <i class="fa fa-forward fa-2x" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </main>
