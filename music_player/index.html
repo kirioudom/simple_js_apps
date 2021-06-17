@@ -19,28 +19,26 @@
     <main class="container">
       <div class="music-player">
         <div class="music-player__picture">
-          <img
-            src="https://images.unsplash.com/photo-1622495806291-29f2d2270e7d?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=686&q=80"
-            alt="music"
-            width="200"
-            height="200"
-          />
+          <img src="./img/jacinto-1.jpg" alt="music" width="200" height="200" />
         </div>
-        <audio src=""></audio>
+        <audio src="./music/jacinto-1.mp3"></audio>
         <p class="music-player__song-title">Electric chill machine</p>
         <p class="music-player__singer-name">singer's name</p>
-        <div class="duration"><span>00:00</span><span>3:00</span></div>
+        <div class="duration">
+          <span id="playedDuration">00:00</span
+          ><span id="songDuration">3:00</span>
+        </div>
         <div class="music-player__progress">
-          <div class="music-player__progress__fill"></div>
+          <div class="music-player__progress__fill" id="progressFill"></div>
         </div>
         <div class="music-player__controller">
-          <button>
+          <button id="backwardButton">
             <i class="fa fa-backward fa-2x" aria-hidden="true"></i>
           </button>
-          <button>
-            <i class="fa fa-play fa-3x" aria-hidden="true"></i>
+          <button id="playButton">
+            <i class="fa fa-play fa-3x" aria-hidden="true" id="playIcon"></i>
           </button>
-          <button>
+          <button id="forwardButton">
             <i class="fa fa-forward fa-2x" aria-hidden="true"></i>
           </button>
         </div>
