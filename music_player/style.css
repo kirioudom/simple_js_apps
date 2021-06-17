@@ -42,7 +42,7 @@ body {
 .music-player__picture img {
   border-radius: 10px;
   object-fit: fill;
-  box-shadow: 0px 5px 20px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 15px 5px rgba(0, 0, 0, 0.3);
 }
 
 p {
@@ -63,7 +63,7 @@ p {
 }
 
 .duration {
-  margin-top: 15px;
+  margin-top: 20px;
   margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
@@ -78,14 +78,14 @@ p {
   border-radius: 10px;
   height: 4px;
   width: 100%;
-  background-color: rgb(218, 218, 218);
+  background-color: rgba(126, 126, 126, 0.2);
 }
 
 .music-player__progress__fill {
   border-radius: 10px;
   height: 100%;
   width: 50%;
-  background-color: rgb(126, 126, 126);
+  background-color: rgba(126, 126, 126, 1);
 }
 
 .music-player__controller {
@@ -98,11 +98,12 @@ p {
 .music-player__controller button {
   cursor: pointer;
   user-select: none;
-  color: rgb(126, 126, 126);
+  color: rgba(126, 126, 126, 0.5);
   font-size: 0.7rem;
   border: 0;
   background-color: transparent;
   padding: 1rem 0.5rem;
+  transition: color 0.3s ease-in-out;
 }
 
 .music-player__controller button:nth-child(1) {
@@ -111,4 +112,8 @@ p {
 
 .music-player__controller button:nth-child(3) {
   margin-left: 15px;
+}
+
+.music-player__controller button:hover {
+  color: rgba(126, 126, 126, 1);
 }
