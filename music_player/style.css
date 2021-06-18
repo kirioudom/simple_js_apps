@@ -86,6 +86,7 @@ p {
   height: 100%;
   width: 0%;
   background-color: rgba(126, 126, 126, 1);
+  transition: width 0.3s linear;
 }
 
 .music-player__controller {
