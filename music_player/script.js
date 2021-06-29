@@ -19,7 +19,7 @@ function convertDuration(minute, second) {
   return `${minuteInView}:${secondInView}`;
 }
 
-function musicPlayListRecord() {
+function musicProvider() {
   const musicData = [
     { pathSong: "./music/jacinto-1.mp3", pathImg: "./img/jacinto-1.jpg" },
     { pathSong: "./music/jacinto-2.mp3", pathImg: "./img/jacinto-2.jpg" },
@@ -28,7 +28,7 @@ function musicPlayListRecord() {
   ];
   let indexMusicData = 0;
 
-  const moveIndexForward = () => {
+  const nextMusic = () => {
     if (indexMusicData == 3) {
       indexMusicData = 0;
       return musicData[indexMusicData];
@@ -37,7 +37,7 @@ function musicPlayListRecord() {
     return musicData[indexMusicData];
   };
 
-  const moveIndexBackward = () => {
+  const previousMusic = () => {
     if (indexMusicData == 0) {
       indexMusicData = 3;
       return musicData[indexMusicData];
@@ -46,11 +46,15 @@ function musicPlayListRecord() {
 
     return musicData[indexMusicData];
   };
-  return [moveIndexBackward, moveIndexForward];
+
+  const currentMusic = () => {
+    return musicData[indexMusicData];
+  };
+  return [previousMusic, currentMusic, nextMusic];
 }
 
 //@arg obj of path location and picture location
-function updateMusic(music) {
+function loadMusic(music) {
   const musicAudioElm = document.querySelector("audio");
   musicAudioElm.src = music.pathSong;
   musicAudioElm.autoplay = true;
@@ -58,30 +62,28 @@ function updateMusic(music) {
   musicPicture.src = music.pathImg;
 }
 
-function main() {
-  const music = document.querySelector("audio");
-  const playedDurationView = document.querySelector("#playedDuration");
-  const songDurationView = document.querySelector("#songDuration");
-  const playBtn = document.querySelector("#playButton");
+function updateProgress({ currentTime, duration }) {
   const progressFill = document.querySelector("#progressFill");
+  const playedDurationView = document.querySelector("#playedDuration");
+
+  const minute = Math.floor(currentTime / 60);
+  const second = Math.floor(currentTime % 60);
+
+  const progressInPercent = (currentTime / duration) * 100;
+
+  progressFill.style.width = `${progressInPercent}%`;
+  playedDurationView.textContent = `${convertDuration(minute, second)}`;
+}
+
+function initAudioElm(musicProivder) {
+  const music = document.querySelector("audio");
+  const songDurationView = document.querySelector("#songDuration");
+  const progressBar = document.querySelector("#progressBar");
+  const [previousMusic, currentMusic, nextMusic] = musicProvider();
   const playIcon = document.querySelector("#playIcon");
-  const forwardButton = document.querySelector("#forwardButton");
-  const backwardButton = document.querySelector("#backwardButton");
-  const [moveIndexBackward, moveIndexForward] = musicPlayListRecord();
 
-  let isMusicPlay = false;
-
-  music.ontimeupdate = () => {
-    const progressInPercent = Math.floor(
-      (music.currentTime / music.duration) * 100
-    );
-
-    const minute = Math.floor(music.currentTime / 60);
-    const second = Math.floor(music.currentTime % 60);
-
-    progressFill.style.width = `${progressInPercent}%`;
-
-    playedDurationView.textContent = `${convertDuration(minute, second)}`;
+  music.ontimeupdate = (e) => {
+    updateProgress(e.target);
   };
 
   music.onloadeddata = () => {
@@ -98,25 +100,63 @@ function main() {
     playIcon.classList.replace("fa-play", "fa-pause");
   };
 
-  backwardButton.addEventListener("click", () => {
-    const songInfo = moveIndexBackward();
-    updateMusic(songInfo);
+  music.addEventListener("ended", () => {
+    loadMusic(nextMusic());
   });
 
-  forwardButton.addEventListener("click", () => {
-    const songInfo = moveIndexForward();
-    updateMusic(songInfo);
+  progressBar.addEventListener("click", ({ offsetX }) => {
+    const { offsetWidth } = progressBar.offsetWidth;
+    //how to convert progress to duration?
+    const { duration } = music;
+    const second = Math.floor((offsetX / offsetWidth) * duration);
+    music.currentTime = second;
+    updateProgress({ currentTime: second, duration });
   });
+
+  return [
+    () => {
+      loadMusic(currentMusic());
+    },
+    () => {
+      loadMusic(nextMusic());
+    },
+    () => {
+      loadMusic(previousMusic());
+    },
+    () => {
+      music.play();
+    },
+    () => {
+      music.pause();
+    },
+  ];
+}
+
+function main() {
+  const playBtn = document.querySelector("#playButton");
+  const forwardButton = document.querySelector("#forwardButton");
+  const backwardButton = document.querySelector("#backwardButton");
+
+  const [loadFirstMusic, nextMusic, previousMusic, playMusic, pauseMusic] =
+    initAudioElm();
+  let isMusicPlay = false;
+
+  //load first music
+  loadFirstMusic();
+
+  backwardButton.addEventListener("click", previousMusic);
+
+  forwardButton.addEventListener("click", nextMusic);
 
   playBtn.addEventListener("click", () => {
     if (isMusicPlay) {
       isMusicPlay = false;
-      music.pause();
+      pauseMusic();
       return;
     }
     isMusicPlay = true;
 
-    music.play();
+    playMusic();
   });
 }
 
