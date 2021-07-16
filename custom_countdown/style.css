@@ -1,0 +1,158 @@
+:root {
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+}
+
+.container {
+  overflow: hidden;
+  max-width: 100%;
+  height: 100%;
+}
+
+video {
+  object-fit: none;
+  object-position: right;
+  width: 100%;
+  height: 100%;
+}
+
+.container-card {
+  width: 30rem;
+
+  border-radius: 10px;
+  padding: 25px 30px;
+  background-color: aliceblue;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 
+.form-container {
+  width: 40%;
+} */
+
+@media screen and (max-width: 590px) {
+  .container-card {
+    width: 90%;
+    padding: 20px 20px;
+  }
+}
+
+.form-container form * {
+  display: block;
+}
+
+.form-container form label {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.form-container form label:nth-child(3) {
+  margin-top: 20px;
+}
+
+.form-container form input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 15px 25px;
+  border: none;
+}
+
+.countdown-timer-container_countDownName {
+  text-align: center;
+  font-weight: 400;
+  padding-bottom: 1.5rem;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+li span {
+  padding-bottom: 0.6rem;
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  display: block;
+}
+
+@media screen and (max-width: 590px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+.btn {
+  margin-top: 2rem;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  border: none;
+  padding: 15px 25px;
+}
+
+.btn-submit {
+  background-color: rgb(0, 114, 76);
+  color: #fff;
+  width: 100%;
+  letter-spacing: 1px;
+}
+
+.btn-reset {
+  background-color: rgb(255, 118, 118);
+  color: rgb(255, 255, 255);
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.text-red {
+  color: rgb(255, 118, 118);
+}
+
+.text-red.animated-duration {
+  animation: completed 1s ease-in-out 0.3s infinite alternate;
+}
+
+@keyframes completed {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}

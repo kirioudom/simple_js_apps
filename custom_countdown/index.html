@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Custom Countdown Timer</title>
+  </head>
+  <body>
+    <main class="container">
+      <video autoplay loop muted>
+        <source src="./time.mp4" type="video/mp4" />
+      </video>
+      <div class="container-card form-container" id="countdownSettingElm">
+        <form>
+          <label for="name">Name</label>
+          <input id="name" type="text" />
+          <label for="date">Date</label>
+          <input id="date" type="date" placeholder="dd-mm-yy" value="" />
+          <button class="btn btn-submit" id="btnSubmit">Submit</button>
+        </form>
+      </div>
+
+      <div
+        class="container-card countdown-timer-container hide"
+        id="countdownEle"
+      >
+        <h2 class="countdown-timer-container_countDownName" id="taskName">
+          Countdown name
+        </h2>
+        <ul>
+          <li><span class="counting" id="numberOfDay">0</span>DAYS</li>
+          <li><span class="counting" id="numberOfHour">0</span>HOURS</li>
+          <li><span class="counting" id="numberOfMinute">0</span>MINUTES</li>
+          <li><span class="counting" id="numberOfSecond">0</span>SECONDS</li>
+        </ul>
+        <button class="btn btn-reset" id="resetBtn">reset</button>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
