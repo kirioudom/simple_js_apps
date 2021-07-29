@@ -4,15 +4,17 @@ const COUNTDOWN_TIMER = "COUNTDOWN_TIMER";
 function defineMinDate() {
   const dateElm = document.querySelector("input[type='date']");
   const currentDate = new Date();
-
-  const [month, date] = [
-    currentDate.getMonth() + 1 > 9
-      ? currentDate.getMonth() + 1
-      : `0${currentDate.getMonth() + 1}`,
-    currentDate.getDate() > 9
-      ? currentDate.getDate()
-      : `0${currentDate.getDate()}`,
-  ];
+  const [month, date] = [currentDate.getMonth() + 1, currentDate.getDate()].map(
+    (d) => `0${d}`.slice(-2)
+  );
+  // const [month, date] = [
+  //   currentDate.getMonth() + 1 > 9
+  //     ? currentDate.getMonth() + 1
+  //     : `0${currentDate.getMonth() + 1}`,
+  //   currentDate.getDate() > 9
+  //     ? currentDate.getDate()
+  //     : `0${currentDate.getDate()}`,
+  // ];
 
   dateElm.setAttribute("min", `${currentDate.getFullYear()}-${month}-${date}`);
 }
@@ -75,18 +77,19 @@ function countingPage({ taskName, date }) {
   const taskNameElm = document.querySelector("#taskName");
   const [updateDurationText, updateTimeup, resetTextColor] = countingView();
 
-  let calculateDate = date - Date.now();
+  let calculateDate = 0;
 
   taskNameElm.innerText = taskName;
 
   let timer = setInterval(() => {
-    calculateDate = calculateDate - 1000;
+    calculateDate = date - new Date();
+    updateDurationText(calculateDate);
     if (calculateDate <= 0) {
       clearTimeout(timer);
       updateTimeup();
     }
-    console.log(calculateDate);
-    updateDurationText(calculateDate);
+
+    //console.log(calculateDate);
   }, 1000);
 
   resetBtn.addEventListener("click", (e) => {
@@ -104,7 +107,9 @@ function countingView() {
     document.querySelectorAll(".counting");
 
   const updateDurationText = (date) => {
-    const [sec, minute, hour, day] = milliseconToDate(date);
+    const [sec, minute, hour, day] = milliseconToDate(date).map((duration) =>
+      `0${duration}`.slice(-2)
+    );
     dayEle.innerText = day;
     hourEle.innerHTML = hour;
     minuteEle.innerHTML = minute;
@@ -113,6 +118,7 @@ function countingView() {
 
   const updateTimeup = () => {
     [dayEle, hourEle, minuteEle, secondEle].forEach((textDuration) => {
+      textDuration.innerText = "00";
       textDuration.classList.add("text-red", "animated-duration");
     });
   };
@@ -126,10 +132,10 @@ function countingView() {
 }
 
 function milliseconToDate(dateInMillisecond) {
-  const hour = dateInMillisecond / 1000 / 60 / 60;
-  const minute = (hour % 1) * 60;
-  const sec = (minute % 1) * 60;
-  const day = hour / 24;
+  const day = dateInMillisecond / 1000 / 60 / 60 / 24;
+  const hour = (dateInMillisecond / 1000 / 60 / 60) % 24;
+  const minute = (dateInMillisecond / 1000 / 60) % 60;
+  const sec = (dateInMillisecond / 1000) % 60;
 
   return [sec, minute, hour, day].map((duration) => Math.floor(duration));
 }
