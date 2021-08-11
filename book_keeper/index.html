@@ -25,11 +25,13 @@
 
       <div class="line"></div>
       <form id="formSubmit">
-        <label for="name">Name</label>
-        <input class="input-name" id="name" type="text" value="" />
-        <label for="link">Link</label>
-        <input type="text" class="link-input" id="link" value="" />
-        <button class="submit-bookmark" id="submit-bookmark">bookmark</button>
+        <label for="name">Website Name</label>
+        <input class="input-name" id="website-name" type="text" value="" />
+        <label for="link">Website URL</label>
+        <input type="text" class="link-input" id="website-link" value="" />
+        <button class="submit-bookmark" id="submit-bookmark" type="submit">
+          bookmark
+        </button>
       </form>
     </div>
     <header>
@@ -39,7 +41,9 @@
     </header>
 
     <main class="container">
-      <a class="link-container" href="#"> Wikipedia </a>
+      <div class="link-container">
+        <a class="bookmark-link" href="#">Wikipedia</a>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>
