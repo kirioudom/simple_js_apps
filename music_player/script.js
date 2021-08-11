@@ -19,6 +19,10 @@ function convertDuration(minute, second) {
   return `${minuteInView}:${secondInView}`;
 }
 
+// function convertDuration(minute, second) {
+//   return `0${minute}`.slice(-2) + ":" + `0${second}`.slice(-2);
+// }
+
 function musicProvider() {
   const musicData = [
     { pathSong: "./music/jacinto-1.mp3", pathImg: "./img/jacinto-1.jpg" },

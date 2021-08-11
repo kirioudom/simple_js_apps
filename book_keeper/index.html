@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Form validator</title>
+  </head>
+  <body>
+    <div class="backdrop" id="backdrop"></div>
+    <div class="modal" id="modal">
+      <h4>
+        <i class="far fa-arrow-alt-circle-left" id="back-icon-form"></i>Bookmark
+        link
+      </h4>
+
+      <div class="line"></div>
+      <form id="formSubmit">
+        <label for="name">Name</label>
+        <input class="input-name" id="name" type="text" value="" />
+        <label for="link">Link</label>
+        <input type="text" class="link-input" id="link" value="" />
+        <button class="submit-bookmark" id="submit-bookmark">bookmark</button>
+      </form>
+    </div>
+    <header>
+      <button class="btn btn-adding-bookmark" id="btn-bookmark">
+        Add Bookmark
+      </button>
+    </header>
+
+    <main class="container">
+      <a class="link-container" href="#"> Wikipedia </a>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
