@@ -10,6 +10,7 @@ function modalInit(submitHandler) {
   };
 
   document.querySelector("#btn-bookmark").addEventListener("click", (e) => {
+    console.log("click");
     modalTrigger();
   });
 
@@ -61,7 +62,6 @@ function bookKeeperData() {
   let bookmarks = localStorage.getItem(dataKey)
     ? JSON.parse(localStorage.getItem(dataKey))
     : [];
-  console.log(bookmarks);
   return {
     getBookmarks: () => bookmarks,
     addBookmark: ({ websiteName, websiteLink }) => {
@@ -71,30 +71,58 @@ function bookKeeperData() {
     },
     removeBookmark: (websiteName) => {
       bookmarks = bookmarks.filter(
-        (bookmark) => bookmark.websiteName === websiteName
+        (bookmark) => bookmark.websiteName !== websiteName
       );
-      localStorage.setItem(dataKey, bookmarks);
+      localStorage.setItem(dataKey, JSON.stringify(bookmarks));
+
       return true;
     },
   };
 }
 
-function updateBookmarksView(data) {
-  const containerElement = document.querySelector(".container");
+function buildBookmarks(data) {
   const generateLinkElment = ({ websiteName, websiteLink }) => {
     return `<div class='link-container'>
-    <a href=${websiteLink} class='bookmark-link'>${websiteName}</a>
+      <a href=${websiteLink} class='bookmark-link'>${websiteName}</a>
+      <button id='remove-bookmark' type="button" class='remove-btn' data-name=${websiteName}>
+        <i class="fas fa-times" ></i>
+      </button>
     </div>`;
   };
 
-  containerElement.innerHTML = data.reduce((element, bookmarkInfo) => {
-    console.log({ ...bookmarkInfo });
+  return data.reduce((element, bookmarkInfo) => {
     return (element += generateLinkElment(bookmarkInfo));
   }, "");
 }
 
-window.onload = () => {
+function bookmarkList(removeBookmarkHandler) {
+  const bookmarksContainer = document.querySelector(".container");
+
+  return function updateBookmarkList(data) {
+    bookmarksContainer.innerHTML = buildBookmarks(data);
+    document.querySelectorAll("#remove-bookmark").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        console.log(button.dataset);
+        removeBookmarkHandler(button.dataset.name);
+      });
+    });
+  };
+}
+
+function main() {
   const bookmarkProvier = bookKeeperData();
-  modalInit(bookmarkProvier.addBookmark);
-  localStorage.clear();
-};
+  const updateBookmarkList = bookmarkList((websiteName) => {
+    bookmarkProvier.removeBookmark(websiteName);
+    updateBookmarkList(bookmarkProvier.getBookmarks());
+  });
+  updateBookmarkList(bookmarkProvier.getBookmarks());
+  modalInit(({ websiteName, websiteLink }) => {
+    const isAdded = bookmarkProvier.addBookmark({ websiteLink, websiteName });
+    console.log("added");
+    if (isAdded) {
+      updateBookmarkList(bookmarkProvier.getBookmarks());
+    }
+  });
+}
+
+window.onload = main;

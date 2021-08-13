@@ -27,6 +27,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(117, 117, 117, 0.945);
+  transition: all 0.5s ease-in-out;
 }
 
 .modal {
@@ -169,12 +170,31 @@ header .btn {
 }
 
 .link-container {
+  position: relative;
   font-size: 1.2rem;
   text-overflow: ellipsis;
   opacity: 0.6;
   background-color: #fff;
   padding: 15px 30px;
   border-radius: 5px;
+}
+
+.remove-btn {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: rgba(110, 110, 110, 0.267);
+  font-size: 0.8rem;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  transform: translateY(-50%);
+  transition: color 0.3s ease-in-out;
+}
+
+.link-container .remove-btn:hover {
+  color: rgb(41, 41, 41);
 }
 
 .link-container:not(:nth-child(1)) {
