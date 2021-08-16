@@ -19,6 +19,7 @@ body {
 }
 
 .backdrop {
+  cursor: pointer;
   display: none;
   position: fixed;
   top: 0;
@@ -58,6 +59,16 @@ body {
 
 .open-modal {
   display: block;
+  animation: showingModal 0.3s;
+}
+
+@keyframes showingModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal form > * {
