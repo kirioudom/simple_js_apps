@@ -180,6 +180,13 @@ header .btn {
   flex-wrap: wrap;
 }
 
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    width: 95%;
+  }
+}
+
 .link-container {
   position: relative;
   font-size: 1.2rem;
@@ -188,6 +195,18 @@ header .btn {
   background-color: #fff;
   padding: 15px 30px;
   border-radius: 5px;
+}
+
+.link-container .remove-btn:hover {
+  color: rgb(41, 41, 41);
+}
+
+.link-container:not(:nth-child(1)) {
+  margin-left: 20px;
+}
+
+.link-container:hover {
+  opacity: 1;
 }
 
 .remove-btn {
@@ -204,14 +223,9 @@ header .btn {
   transition: color 0.3s ease-in-out;
 }
 
-.link-container .remove-btn:hover {
-  color: rgb(41, 41, 41);
-}
-
-.link-container:not(:nth-child(1)) {
-  margin-left: 20px;
-}
-
-.link-container:hover {
-  opacity: 1;
+@media screen and (max-width: 480px) {
+  .link-container:not(:nth-child(1)) {
+    margin-left: 0;
+    margin-top: 20px;
+  }
 }

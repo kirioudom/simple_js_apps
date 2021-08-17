@@ -1,6 +1,7 @@
 function modalInit(submitHandler) {
   const modalElement = document.querySelector("#modal");
   const backdrop = document.querySelector("#backdrop");
+  const backIcon = document.querySelector("#backIcon");
   const clearInputForm = formInit(submitHandler);
 
   const modalTrigger = () => {
@@ -15,6 +16,10 @@ function modalInit(submitHandler) {
   });
 
   backdrop.addEventListener("click", (e) => {
+    modalTrigger();
+  });
+
+  backIcon.addEventListener("click", (e) => {
     modalTrigger();
   });
 }
@@ -41,10 +46,6 @@ function formInit(submitHandler) {
       submitHandler({ websiteLink, websiteName });
       clearInputForm();
     }
-  });
-
-  submitBtn.addEventListener("click", (e) => {
-    e.preventDefault();
   });
 
   const clearInputForm = () => {
