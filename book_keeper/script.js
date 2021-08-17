@@ -28,7 +28,7 @@ function formInit(submitHandler) {
   const inputWebsiteNameElment = document.querySelector("#website-name");
   const inputWebsiteLinkElement = document.querySelector("#website-link");
   const formElement = document.querySelector("form");
-  const submitBtn = document.querySelector("#btn-bookmark");
+
   let websiteName = "";
   let websiteLink = "";
 
@@ -40,9 +40,29 @@ function formInit(submitHandler) {
     websiteName = e.target.value;
   });
 
+  const validateBookmark = (websiteName, websiteLink) => {
+    const regexValidateUrl =
+      /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
+
+    if ([websiteLink, websiteName].filter(Boolean).length < 2) {
+      alert("Please fill the missing input field");
+      return;
+    }
+
+    if (!websiteLink.match(regexValidateUrl)) {
+      alert("Invalid website link");
+      return;
+    }
+
+    return true;
+  };
+
   formElement.addEventListener("submit", (e) => {
     e.preventDefault();
-    if ([websiteName, websiteLink].filter(Boolean).length === 2) {
+    if (!websiteLink.includes("https://") || !websiteLink.includes("http://")) {
+      websiteLink = `https://${websiteLink}`;
+    }
+    if (validateBookmark(websiteName, websiteLink)) {
       submitHandler({ websiteLink, websiteName });
       clearInputForm();
     }
@@ -84,7 +104,7 @@ function bookKeeperData() {
 function buildBookmarks(data) {
   const generateLinkElment = ({ websiteName, websiteLink }) => {
     return `<div class='link-container'>
-      <a href=${websiteLink} class='bookmark-link'>${websiteName}</a>
+      <a href=${websiteLink} class='bookmark-link' target='_blank'>${websiteName}</a>
       <button id='remove-bookmark' type="button" class='remove-btn' data-name=${websiteName}>
         <i class="fas fa-times" ></i>
       </button>
