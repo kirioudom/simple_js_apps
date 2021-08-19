@@ -6,13 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>My template</title>
+    <title>Spocky Rocky Game</title>
   </head>
   <body>
+    <main class="container">
+      <div class="game">
+        <p class="game__header">Spocky Rocky</p>
+        <div class="game__controller-container">
+          <div class="game__controller-player">
+            <p class="controller-player__player-name">
+              You - 1
+              <span class="controller-player__player-name__symbol-name"
+                ><i class="fas fa-arrow-right"></i> Rock</span
+              >
+            </p>
+            <div class="controller-player__symbols">
+              <i class="far fa-hand-rock"></i>
+              <i class="far fa-hand-paper"></i>
+              <i class="far fa-hand-scissors"></i>
+              <i class="far fa-hand-lizard"></i>
+              <i class="far fa-hand-lizard"></i>
+            </div>
+          </div>
+          <div class="game__controller-player">
+            <p class="controller-player__player-name">
+              Computer - 1
+              <span
+                class="
+                  controller-player__player-name__symbol-name
+                  computer-player
+                "
+                ><i class="fas fa-arrow-right"></i> Rock</span
+              >
+            </p>
+            <div class="controller-player__symbols computer-player">
+              <i class="far fa-hand-rock"></i>
+              <i class="far fa-hand-paper"></i>
+              <i class="far fa-hand-scissors"></i>
+              <i class="far fa-hand-lizard"></i>
+              <i class="far fa-hand-lizard"></i>
+            </div>
+          </div>
+
+          <button class="btn-reset">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+
+          <div class="game__status-container">
+            <p class="game__status-container__state">You Won!</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,5 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300;600&display=swap");
+
 :root {
   box-sizing: border-box;
+  --primary-color: rgb(56, 192, 255);
+  --danger-color: rgb(255, 87, 82);
+  --secondary-color: rgb(56, 54, 54);
 }
 
 *,
@@ -8,7 +13,83 @@
   box-sizing: inherit;
 }
 
+html {
+  font-family: "Mukta", sans-serif;
+  font-size: 12px;
+}
+
 body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
   height: 100vh;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gainsboro;
+}
+
+.game {
+  border-radius: 5px;
+  /* width: 50rem; */
+  max-width: 95%;
+  background-color: rgb(255, 255, 255);
+}
+
+.game__header {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  font-size: 1.7rem;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--primary-color);
+}
+
+.game__controller-container {
+  padding: 1.5rem 2.5rem;
+}
+
+.game__controller-player:nth-of-type(2) {
+  margin-top: 40px;
+}
+
+.controller-player__player-name {
+  font-size: 1.4rem;
+}
+
+.controller-player__player-name__symbol-name {
+  color: var(--primary-color);
+}
+
+.computer-player {
+  color: var(--danger-color);
+}
+
+.controller-player__symbols > i {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 3rem;
+  margin: 0;
+  margin-right: 20px;
+}
+
+.btn-reset {
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1.5rem;
+  margin-top: 25px;
+  border: none;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+.btn-reset:hover {
+  color: var(--primary-color);
 }
