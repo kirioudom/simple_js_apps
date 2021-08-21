@@ -23,16 +23,36 @@
           <div class="game__controller-player">
             <p class="controller-player__player-name">
               You - 1
-              <span class="controller-player__player-name__symbol-name"
+              <span class="controller-player__player-name__symbol-name hide"
                 ><i class="fas fa-arrow-right"></i> Rock</span
               >
             </p>
             <div class="controller-player__symbols">
-              <i class="far fa-hand-rock"></i>
-              <i class="far fa-hand-paper"></i>
-              <i class="far fa-hand-scissors"></i>
-              <i class="far fa-hand-lizard"></i>
-              <i class="far fa-hand-lizard"></i>
+              <i
+                class="far fa-hand-rock"
+                data-name="rock"
+                id="controllerSymbol"
+              ></i>
+              <i
+                class="far fa-hand-paper"
+                data-name="paper"
+                id="controllerSymbol"
+              ></i>
+              <i
+                class="far fa-hand-scissors"
+                data-name="scissors"
+                id="controllerSymbol"
+              ></i>
+              <i
+                class="far fa-hand-lizard"
+                data-name="lizard"
+                id="controllerSymbol"
+              ></i>
+              <i
+                class="far fa-hand-spock"
+                data-name="spock"
+                id="controllerSymbol"
+              ></i>
             </div>
           </div>
           <div class="game__controller-player">
@@ -42,16 +62,17 @@
                 class="
                   controller-player__player-name__symbol-name
                   computer-player
+                  hide
                 "
                 ><i class="fas fa-arrow-right"></i> Rock</span
               >
             </p>
             <div class="controller-player__symbols computer-player">
-              <i class="far fa-hand-rock"></i>
-              <i class="far fa-hand-paper"></i>
-              <i class="far fa-hand-scissors"></i>
-              <i class="far fa-hand-lizard"></i>
-              <i class="far fa-hand-lizard"></i>
+              <i class="far fa-hand-rock" data-name="rock"></i>
+              <i class="far fa-hand-paper" data-name="paper"></i>
+              <i class="far fa-hand-scissors" data-name="scissors"></i>
+              <i class="far fa-hand-lizard" data-name="lizard"></i>
+              <i class="far fa-hand-spock" data-name="spock"></i>
             </div>
           </div>
 
@@ -60,7 +81,7 @@
           </button>
 
           <div class="game__status-container">
-            <p class="game__status-container__state">You Won!</p>
+            <p class="game__status-container__state hide">You Won!</p>
           </div>
         </div>
       </div>
