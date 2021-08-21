@@ -62,6 +62,7 @@ body {
 }
 
 .controller-player__player-name {
+  font-weight: 500;
   font-size: 1.4rem;
 }
 
@@ -73,12 +74,40 @@ body {
   color: var(--danger-color);
 }
 
+.btn {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.btn-symbol {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 3rem;
+  margin: 0;
+  margin-right: 20px;
+  transition: color 0.3s;
+}
+
+.btn-symbol-focus {
+  color: var(--primary-color);
+}
+
+.computer-player-symbol-focus {
+  color: var(--secondary-color);
+}
+
 .controller-player__symbols > i {
   cursor: pointer;
   display: inline-block;
   font-size: 3rem;
   margin: 0;
   margin-right: 20px;
+  transition: color 0.3s;
+}
+
+.controller-player__symbols:not(.computer-player) > .btn-symbol:hover {
+  color: var(--primary-color);
 }
 
 .btn-reset {

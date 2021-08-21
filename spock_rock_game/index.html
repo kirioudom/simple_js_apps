@@ -23,36 +23,48 @@
           <div class="game__controller-player">
             <p class="controller-player__player-name">
               You - 1
-              <span class="controller-player__player-name__symbol-name hide"
-                ><i class="fas fa-arrow-right"></i> Rock</span
-              >
+              <span
+                class="controller-player__player-name__symbol-name hide"
+                id="player-symbol"
+                ><i class="fas fa-arrow-right"></i
+              ></span>
             </p>
             <div class="controller-player__symbols">
-              <i
-                class="far fa-hand-rock"
-                data-name="rock"
-                id="controllerSymbol"
-              ></i>
-              <i
-                class="far fa-hand-paper"
-                data-name="paper"
-                id="controllerSymbol"
-              ></i>
-              <i
-                class="far fa-hand-scissors"
-                data-name="scissors"
-                id="controllerSymbol"
-              ></i>
-              <i
-                class="far fa-hand-lizard"
-                data-name="lizard"
-                id="controllerSymbol"
-              ></i>
-              <i
-                class="far fa-hand-spock"
-                data-name="spock"
-                id="controllerSymbol"
-              ></i>
+              <button class="btn btn-symbol">
+                <i
+                  class="far fa-hand-rock"
+                  data-name="rock"
+                  id="controllerSymbol"
+                ></i>
+              </button>
+              <button class="btn btn-symbol">
+                <i
+                  class="far fa-hand-paper"
+                  data-name="paper"
+                  id="controllerSymbol"
+                ></i>
+              </button>
+              <button class="btn btn-symbol">
+                <i
+                  class="far fa-hand-scissors"
+                  data-name="scissors"
+                  id="controllerSymbol"
+                ></i>
+              </button>
+              <button class="btn btn-symbol">
+                <i
+                  class="far fa-hand-lizard"
+                  data-name="lizard"
+                  id="controllerSymbol"
+                ></i>
+              </button>
+              <button class="btn btn-symbol">
+                <i
+                  class="far fa-hand-spock"
+                  data-name="spock"
+                  id="controllerSymbol"
+                ></i>
+              </button>
             </div>
           </div>
           <div class="game__controller-player">
@@ -64,8 +76,9 @@
                   computer-player
                   hide
                 "
-                ><i class="fas fa-arrow-right"></i> Rock</span
-              >
+                id="computer-symbol"
+                ><i class="fas fa-arrow-right"></i
+              ></span>
             </p>
             <div class="controller-player__symbols computer-player">
               <i class="far fa-hand-rock" data-name="rock"></i>
