@@ -63,13 +63,22 @@ body {
 
 .controller-player__player-name {
   font-weight: 500;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
-.controller-player__player-name__symbol-name {
+.controller-player__player-name i {
   color: var(--primary-color);
 }
 
+.controller-player__player-name i.computer-player {
+  color: var(--danger-color);
+}
+
+.controller-player__player-name__symbol-name {
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
 .computer-player {
   color: var(--danger-color);
 }
@@ -97,13 +106,22 @@ body {
   color: var(--secondary-color);
 }
 
+.controller-player__symbols {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .controller-player__symbols > i {
-  cursor: pointer;
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 3rem;
   margin: 0;
   margin-right: 20px;
   transition: color 0.3s;
+}
+
+.controller-player__symbols:not(.computer-player) > i {
+  cursor: pointer;
 }
 
 .controller-player__symbols:not(.computer-player) > .btn-symbol:hover {

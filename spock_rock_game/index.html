@@ -23,10 +23,10 @@
           <div class="game__controller-player">
             <p class="controller-player__player-name">
               You - 1
+              <i class="fas fa-arrow-right"></i>
               <span
-                class="controller-player__player-name__symbol-name hide"
+                class="controller-player__player-name__symbol-name"
                 id="player-symbol"
-                ><i class="fas fa-arrow-right"></i
               ></span>
             </p>
             <div class="controller-player__symbols">
@@ -70,31 +70,52 @@
           <div class="game__controller-player">
             <p class="controller-player__player-name">
               Computer - 1
+              <i class="fas fa-arrow-right computer-player"></i>
               <span
                 class="
                   controller-player__player-name__symbol-name
                   computer-player
-                  hide
                 "
                 id="computer-symbol"
-                ><i class="fas fa-arrow-right"></i
               ></span>
             </p>
             <div class="controller-player__symbols computer-player">
-              <i class="far fa-hand-rock" data-name="rock"></i>
-              <i class="far fa-hand-paper" data-name="paper"></i>
-              <i class="far fa-hand-scissors" data-name="scissors"></i>
-              <i class="far fa-hand-lizard" data-name="lizard"></i>
-              <i class="far fa-hand-spock" data-name="spock"></i>
+              <i
+                class="far fa-hand-rock"
+                data-name="rock"
+                id="computerPlayerSymbol"
+              ></i>
+              <i
+                class="far fa-hand-paper"
+                data-name="paper"
+                id="computerPlayerSymbol"
+              ></i>
+              <i
+                class="far fa-hand-scissors"
+                data-name="scissors"
+                id="computerPlayerSymbol"
+              ></i>
+              <i
+                class="far fa-hand-lizard"
+                data-name="lizard"
+                id="computerPlayerSymbol"
+              ></i>
+              <i
+                class="far fa-hand-spock"
+                data-name="spock"
+                id="computerPlayerSymbol"
+              ></i>
             </div>
           </div>
 
-          <button class="btn-reset">
+          <button class="btn-reset" id="resetGame">
             <i class="fas fa-sync-alt"></i>
           </button>
 
           <div class="game__status-container">
-            <p class="game__status-container__state hide">You Won!</p>
+            <p class="game__status-container__state hide" id="resultGame">
+              you won
+            </p>
           </div>
         </div>
       </div>
